@@ -92,6 +92,7 @@ php /home/site/wwwroot/artisan horizon:terminate
 # npm run production --silent
 
 service nginx restart
-service supervisor restart
+
+supervisord -c /etc/supervisor/conf.d/supervisord.conf -d
 
 php /home/site/wwwroot/artisan up
