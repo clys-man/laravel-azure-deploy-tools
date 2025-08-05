@@ -90,6 +90,6 @@ php /home/site/wwwroot/artisan horizon:terminate
 
 service nginx restart
 
-supervisord -c /etc/supervisor/conf.d/supervisord.conf
-
 php /home/site/wwwroot/artisan up
+
+supervisord -c /etc/supervisor/conf.d/supervisord.conf
