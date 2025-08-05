@@ -8,7 +8,6 @@ echo "Maintenance Secret: $APP_MAINTENANCE_SECRET"
 
 php /home/site/wwwroot/artisan down --refresh=15 --secret="$APP_MAINTENANCE_SECRET"
 
-# Função para instalar pacotes apenas se não estiverem instalados
 install_if_missing() {
     for pkg in "$@"; do
         if ! dpkg -s "$pkg" >/dev/null 2>&1; then
@@ -21,7 +20,6 @@ install_if_missing() {
     fi
 }
 
-# Lista de pacotes necessários
 REQUIRED_PACKAGES=(
     cron
     nginx
@@ -52,7 +50,6 @@ enable_php_extension() {
 }
 
 if ! php -m | grep -q "^gd$"; then
-    echo "Instalando extensão PHP: gd"
     docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp
     docker-php-ext-install gd
 fi
