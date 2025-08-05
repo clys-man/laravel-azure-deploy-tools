@@ -62,14 +62,14 @@ if ! php -m | grep -q "^redis$"; then
     pecl install redis
     docker-php-ext-enable redis
 fi
-
+#
 mkdir -p /etc/supervisor.d /run/nginx /var/www /var/log/supervisor /var/log/nginx &&
     touch /run/nginx/nginx.pid /run/supervisord.sock &&
     ln -sf /dev/stdout /var/log/nginx/access.log &&
     ln -sf /dev/stderr /var/log/nginx/error.log
 
 cp ./supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-cp ./crontab /etc/crontabs/root
+# cp ./crontab /etc/crontabs/root
 cp ./php/php.ini /usr/local/etc/php/conf.d/local.ini
 cp ./nginx/conf.d/default.conf /etc/nginx/sites-enabled/default
 
